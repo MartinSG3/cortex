@@ -9,7 +9,7 @@ const Users = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [imageUrl, setImagUrl] = useState("man");
+  const [imageUrl, setImagUrl] = useState("");
 
   // Fetching data from campaigns
   useEffect(() => {
@@ -89,7 +89,7 @@ const Users = () => {
                 value={imageUrl}
                 onChange={(e) => setImagUrl(e.target.value)}
               />
-              <span>ImageUrl (Don't change)</span>
+              <span>ImageUrl (pb_2)</span>
             </label>
             <br />
             <div className={styles.button_container}>

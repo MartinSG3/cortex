@@ -145,10 +145,17 @@
       font-size: variables.$fs_small_bread;
       color: variables.$font;
       font-weight: 400;
+      padding-bottom: 1rem;
 
       @media (max-width: breakpoints.$stack) {
         width: 100%;
       }
+    }
+
+    a {
+      font-size: variables.$fs_small_bread;
+      color: variables.$font;
+      text-decoration: underline;
     }
   }
 

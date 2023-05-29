@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "../../../styling/users.module.scss";
+import Link from "next/link";
 
 const UserPage = () => {
   const params = useParams();
@@ -16,7 +17,7 @@ const UserPage = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [imageUrl, setImagUrl] = useState<string>("man");
+  const [imageUrl, setImagUrl] = useState<string>("");
 
   // Fetching data from campaigns, dynamic routes
   useEffect(() => {
@@ -90,6 +91,7 @@ const UserPage = () => {
           User: {clients?.name} ({id})
         </h1>
         <p>Update user, or delete user</p>
+        <Link href={"/users"}>Return to all user</Link>
       </div>
       <form onSubmit={handleSubmit}>
         <label className={styles.searchformfld}>
@@ -113,7 +115,7 @@ const UserPage = () => {
         <label className={styles.searchformfld}>
           <input
             placeholder=" "
-            type="text"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -126,7 +128,7 @@ const UserPage = () => {
             value={imageUrl}
             onChange={(e) => setImagUrl(e.target.value)}
           />
-          <span>ImageUrl (Don't change)</span>
+          <span>ImageUrl (pb_1)</span>
         </label>
         <br />
         <div className={styles.button_container}>
