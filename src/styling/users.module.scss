@@ -1,0 +1,211 @@
+@use "./variables";
+@use "./breakpoints";
+
+.users {
+  height: 100%;
+  width: 100%;
+  padding: 5rem 5rem;
+
+  @media (max-width: breakpoints.$stack) {
+    padding: 5rem 0;
+    margin: 0 auto;
+    width: 95%;
+  }
+
+  h1 {
+    font-size: variables.$fs_small_title;
+    color: variables.$font;
+    font-weight: 400;
+    padding-bottom: 1rem;
+  }
+
+  form {
+    padding: 1rem 0;
+
+    .searchformfld {
+      margin-top: 1.5625rem;
+      padding: 1.5625rem 0 0 0;
+      position: relative;
+      width: 26rem;
+      display: flex;
+
+      @media (max-width: 600px) {
+        width: 100%;
+      }
+
+      span {
+        padding-bottom: 0.625rem;
+        pointer-events: none;
+        position: absolute;
+        left: 0;
+        top: 1.563rem;
+        transition: 0.2s;
+        transition-timing-function: ease;
+        transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+        opacity: 0.5;
+        font-size: variables.$fs_x;
+        color: variables.$font;
+      }
+
+      input {
+        border: none;
+        border-bottom: 2px solid variables.$inactiveLine;
+        font-size: variables.$fs_small_text;
+        width: 100%;
+        color: variables.$font;
+        padding: 0.5rem 0;
+        background-color: transparent;
+      }
+
+      input:focus {
+        outline: none !important;
+        border-bottom: 2px solid variables.$font;
+      }
+
+      input:focus + span,
+      input:not(:placeholder-shown) + span {
+        transform: translateY(-100%) translateX(0px);
+      }
+
+      /* For IE Browsers*/
+      input:focus + span,
+      input:not(:-ms-input-placeholder) + span {
+        transform: translateY(-100%) translateX(0px);
+      }
+    }
+
+    .button_container {
+      button {
+        border: none;
+        border-radius: 30px;
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: variables.$fs_small_bread;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: #1b2d42;
+      }
+    }
+  }
+
+  .list_container {
+    padding-top: 2rem;
+  }
+}
+
+.users_id {
+  height: 100%;
+  width: 100%;
+  padding: 5rem 5rem;
+
+  @media (max-width: breakpoints.$stack) {
+    padding: 5rem 0;
+    margin: 0 auto;
+    width: 95%;
+  }
+
+  h1 {
+    font-size: variables.$fs_small_title;
+    color: variables.$font;
+    font-weight: 400;
+    padding-bottom: 0.5rem;
+  }
+
+  form {
+    padding-top: 1rem;
+
+    .searchformfld {
+      margin-top: 1.5625rem;
+      padding: 1.5625rem 0 0 0;
+      position: relative;
+      width: 26rem;
+      display: flex;
+
+      @media (max-width: 600px) {
+        width: 100%;
+      }
+
+      span {
+        padding-bottom: 0.625rem;
+        pointer-events: none;
+        position: absolute;
+        left: 0;
+        top: 1.563rem;
+        transition: 0.2s;
+        transition-timing-function: ease;
+        transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+        opacity: 0.5;
+        font-size: variables.$fs_x;
+        color: variables.$font;
+      }
+
+      input {
+        border: none;
+        border-bottom: 2px solid variables.$inactiveLine;
+        font-size: variables.$fs_small_text;
+        width: 100%;
+        color: variables.$font;
+        padding: 0.5rem 0;
+        background-color: transparent;
+      }
+
+      input:focus {
+        outline: none !important;
+        border-bottom: 2px solid variables.$font;
+      }
+
+      input:focus + span,
+      input:not(:placeholder-shown) + span {
+        transform: translateY(-100%) translateX(0px);
+      }
+
+      /* For IE Browsers*/
+      input:focus + span,
+      input:not(:-ms-input-placeholder) + span {
+        transform: translateY(-100%) translateX(0px);
+      }
+    }
+
+    @media (max-width: breakpoints.$stack) {
+      display: block;
+    }
+
+    .button_container {
+      margin-right: 1rem;
+      button {
+        border: none;
+        border-radius: 30px;
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: variables.$fs_small_bread;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: #1b2d42;
+      }
+    }
+  }
+
+  .button_container_delete {
+    margin-top: 1rem;
+
+    button {
+      border: none;
+      border-radius: 30px;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: variables.$fs_small_bread;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: variables.$dark_red;
+    }
+  }
+}

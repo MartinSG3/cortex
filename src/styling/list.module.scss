@@ -1,0 +1,57 @@
+@use "./variables";
+@use "./breakpoints";
+
+.list {
+  background-color: variables.$white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 1rem;
+  border-radius: 20px;
+  width: 100%;
+
+  @media (max-width: breakpoints.$stack) {
+    padding: 0;
+  }
+
+  ul {
+    width: 100%;
+    li {
+      list-style: none;
+
+      .content {
+        display: flex;
+        position: relative;
+        padding: 1rem;
+
+        @media (max-width: breakpoints.$mini-tablet) {
+          flex-wrap: wrap;
+        }
+
+        .image {
+          height: 100%;
+          width: 100px;
+          margin-right: 1rem;
+
+          img {
+            border-radius: 10px;
+            object-fit: cover;
+          }
+        }
+
+        .text {
+          width: 80%;
+
+          a {
+            color: variables.$font;
+            font-size: variables.$fs_small_bread;
+            word-wrap: break-word;
+          }
+
+          h4 {
+            margin-top: 0.5rem;
+            word-wrap: break-word;
+          }
+        }
+      }
+    }
+  }
+}

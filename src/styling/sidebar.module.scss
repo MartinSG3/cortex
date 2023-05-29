@@ -1,0 +1,170 @@
+@use "./variables";
+@use "./breakpoints";
+
+.sidebar {
+  .content {
+    background-color: variables.$white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 15rem;
+    position: relative;
+    height: 100vh;
+    overflow: auto;
+    border-radius: 0 50px 50px 0;
+
+    @media (max-width: breakpoints.$stack) {
+      display: none;
+    }
+
+    ul {
+      padding: 10rem 3rem;
+
+      li {
+        list-style: none;
+        padding-bottom: 3rem;
+
+        color: black;
+        font-size: 22px;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.hamburger_btn {
+  position: absolute;
+  top: 2.5rem;
+  left: 1rem;
+  z-index: 20;
+
+  @media (min-width: breakpoints.$stack) {
+    display: none;
+  }
+
+  .burger {
+    cursor: pointer;
+    display: flex;
+    outline: none;
+    height: 20px;
+    width: 45px;
+    border: 0px;
+    padding: 0px;
+    background: transparent;
+    transition: all 250ms ease-out;
+  }
+
+  .burger:before,
+  .burger:after {
+    content: "";
+    width: 40px;
+    height: 2px;
+    position: absolute;
+    background: black;
+    transition: all 250ms ease-out;
+    will-change: transform;
+  }
+
+  .burger:before {
+    margin-top: 18px;
+  }
+
+  .burger:before {
+    transform: translateY(-3px);
+  }
+
+  .burger:after {
+    transform: translateY(3px);
+  }
+
+  .burgerOpen {
+    display: flex;
+    outline: none;
+    height: 10px;
+    width: 45px;
+    border: 0px;
+    padding: 0px;
+    background: transparent;
+    transition: all 250ms ease-out;
+    cursor: pointer;
+  }
+
+  .burgerOpen:before,
+  .burgerOpen:after {
+    content: "";
+    width: 35px;
+    height: 2px;
+    position: absolute;
+    background: white;
+    transition: all 250ms ease-out;
+    will-change: transform;
+  }
+
+  // line transition
+
+  .burgerOpen:before {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  .burgerOpen:after {
+    transform: translateY(0) rotate(-45deg);
+  }
+}
+
+.hamburger {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+
+  background-color: variables.$font;
+
+  @media (min-width: breakpoints.$stack) {
+    display: none;
+  }
+
+  .content {
+    margin-top: 10rem;
+    padding: 0 2rem;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      z-index: 2;
+      position: relative;
+
+      li {
+        padding-bottom: 2rem;
+        font-size: variables.$fs_small_title;
+
+        cursor: pointer;
+
+        a {
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+
+    .button_container {
+      position: absolute;
+      bottom: 5rem;
+      z-index: 2;
+
+      button {
+        border: none;
+        border-radius: 30px;
+        color: variables.$font;
+        padding: 1rem 1.5rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: variables.$fs_small_bread;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: white;
+      }
+    }
+  }
+}

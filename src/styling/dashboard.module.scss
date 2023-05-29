@@ -1,0 +1,83 @@
+@use "./variables";
+@use "./breakpoints";
+
+.dashboard {
+  height: 100%;
+  width: 100%;
+  padding: 5rem 5rem;
+
+  @media (max-width: breakpoints.$stack) {
+    padding: 5rem 0;
+    margin: 0 auto;
+    width: 95%;
+  }
+
+  .flex {
+    width: 100%;
+    display: flex;
+
+    @media (max-width: breakpoints.$stack) {
+      display: block;
+    }
+
+    .left {
+      .clients_container {
+        margin-bottom: 5rem;
+
+        h2 {
+          font-size: variables.$fs_small_title;
+          color: variables.$font;
+          font-weight: 400;
+          padding-bottom: 1rem;
+        }
+
+        .tags_container {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+
+      .campaigns_container {
+        @media (max-width: breakpoints.$stack) {
+          margin-bottom: 5rem;
+        }
+
+        h2 {
+          font-size: variables.$fs_small_title;
+          color: variables.$font;
+          font-weight: 400;
+          padding-bottom: 2rem;
+        }
+
+        .table {
+          width: 100%;
+        }
+      }
+    }
+
+    .right {
+      margin-left: 3rem;
+
+      @media (max-width: breakpoints.$stack) {
+        margin-left: 0;
+      }
+
+      .users_container {
+        width: 100%;
+        width: 30rem;
+
+        @media (max-width: breakpoints.$stack) {
+          width: 100%;
+        }
+
+        h2 {
+          font-size: variables.$fs_small_title;
+          color: variables.$font;
+          font-weight: 400;
+          padding-bottom: 2rem;
+        }
+      }
+    }
+  }
+}

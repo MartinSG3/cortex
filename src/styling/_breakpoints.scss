@@ -1,0 +1,24 @@
+$breakpoints: (
+  "phone": 425px,
+  "mini-tablet": 560px,
+  "tablet": 768px,
+  "stack": 1080px,
+  "desktop": 1366px,
+  "LGdesktop": 1920px,
+  "Widedesktop": 2250px,
+) !default;
+
+@mixin LGdesktop() {
+  @media (max-width: 1920px) {
+    @content;
+  }
+}
+
+$Widedesktop: 2250px;
+$LGdesktop: 1920px;
+$b_desktop: 1666px;
+$desktop: 1366px;
+$stack: 1080px;
+$tablet: 768px;
+$mini-tablet: 560px;
+$phone: 425px;
