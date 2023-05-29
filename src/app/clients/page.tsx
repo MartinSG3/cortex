@@ -6,8 +6,8 @@ import styles from "../../styling/client.module.scss";
 
 const Clients = () => {
   const [clients, setClients] = useState<Client[]>([]);
-  const [name, setName] = useState("");
 
+  // Fetching data from campaigns
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,29 +23,12 @@ const Clients = () => {
     fetchData();
   }, []);
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-
-    const post = { name };
-
-    fetch("http://localhost:4000/clients", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(post),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
-
   return (
     <main className={styles.clients}>
+      <div className={styles.intro}>
+        <h1>All clietns</h1>
+        <p>List over all users</p>
+      </div>
       <div className={styles.tags_container}>
         <Tags clientData={clients}></Tags>
       </div>

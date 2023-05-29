@@ -29,6 +29,7 @@ export default function Dashboard() {
   const [clients, setClients] = useState<Client[]>([]);
   const [users, setUsers] = useState<User[]>([]);
 
+  // Fetching data from campaigns
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -53,8 +54,6 @@ export default function Dashboard() {
 
     fetchData();
   }, []);
-
-  console.log(users);
 
   return (
     <main className={styles.dashboard}>

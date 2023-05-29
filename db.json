@@ -1,6 +1,12 @@
 {
   "users": [
     {
+      "id": 1,
+      "name": "SAFSFSA Gwendoline",
+      "email": "davina.gwendoline@publicisgroupe.com",
+      "password": "bfsbw53"
+    },
+    {
       "id": 2,
       "name": "Jaylah Suz",
       "email": "jaylah.suz@publicisgroupe.com",
@@ -57,9 +63,9 @@
       "imageUrl": "man"
     },
     {
-      "name": "Bro",
+      "name": "Martn",
       "email": "martin.sg.99.mg@gmail.com",
-      "password": "123",
+      "password": "test",
       "imageUrl": "man",
       "id": 10
     }

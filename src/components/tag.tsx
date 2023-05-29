@@ -5,16 +5,12 @@ interface TagsProps {
   clientData: Client[];
 }
 
-/*
-Tanker: swiper for list?
-*/
-
 const Tags = ({ clientData }: TagsProps) => {
   return (
     <>
       {clientData.map((item) => (
         <div className={styles.tag} key={item.id}>
-          <Link href={`/clients/${item.id}`}>{item.name}</Link>
+          <Link href={"/clients/"}>{item.name}</Link>
         </div>
       ))}
     </>

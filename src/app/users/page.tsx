@@ -11,12 +11,10 @@ const Users = () => {
   const [password, setPassword] = useState("");
   const [imageUrl, setImagUrl] = useState("man");
 
-  console.log(users);
-
+  // Fetching data from campaigns
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch users
         const resUsers = await fetch("http://localhost:4000/users");
         const usersData = await resUsers.json();
         setUsers(usersData);
@@ -28,9 +26,8 @@ const Users = () => {
     fetchData();
   }, []);
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-
+  // Post request to api
+  const handleSubmit = async () => {
     const post = { name, email, password, imageUrl };
 
     fetch("http://localhost:4000/users", {
@@ -51,51 +48,58 @@ const Users = () => {
 
   return (
     <main className={styles.users}>
-      <h1>All users</h1>
-      <form onSubmit={handleSubmit}>
-        <label className={styles.searchformfld}>
-          <input
-            placeholder=" "
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <span>Name</span>
-        </label>
-        <label className={styles.searchformfld}>
-          <input
-            placeholder=" "
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <span>Email</span>
-        </label>
-        <label className={styles.searchformfld}>
-          <input
-            placeholder=" "
-            type="text"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <span>Password</span>
-        </label>
-        <label className={styles.searchformfld}>
-          <input
-            placeholder=" "
-            type="text"
-            value={imageUrl}
-            onChange={(e) => setImagUrl(e.target.value)}
-          />
-          <span>ImageUrl (Don't change)</span>
-        </label>
-        <br />
-        <div className={styles.button_container}>
-          <button type="submit">Upload</button>
+      <div className={styles.flex}>
+        <div>
+          <div className={styles.intro}>
+            <h1>All users</h1>
+            <p>Create user, or target user ID by clicking on username</p>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <label className={styles.searchformfld}>
+              <input
+                placeholder=" "
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <span>Name</span>
+            </label>
+            <label className={styles.searchformfld}>
+              <input
+                placeholder=" "
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <span>Email</span>
+            </label>
+            <label className={styles.searchformfld}>
+              <input
+                placeholder=" "
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span>Password</span>
+            </label>
+            <label className={styles.searchformfld}>
+              <input
+                placeholder=" "
+                type="text"
+                value={imageUrl}
+                onChange={(e) => setImagUrl(e.target.value)}
+              />
+              <span>ImageUrl (Don't change)</span>
+            </label>
+            <br />
+            <div className={styles.button_container}>
+              <button type="submit">Upload</button>
+            </div>
+          </form>
         </div>
-      </form>
-      <div className={styles.list_container}>
-        <List clientData={users}></List>
+        <div className={styles.list_container}>
+          <List clientData={users}></List>
+        </div>
       </div>
     </main>
   );

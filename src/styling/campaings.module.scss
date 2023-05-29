@@ -12,11 +12,26 @@
     width: 95%;
   }
 
-  h1 {
-    font-size: variables.$fs_small_title;
-    color: variables.$font;
-    font-weight: 400;
+  .intro {
     padding-bottom: 2rem;
+
+    h1 {
+      font-size: variables.$fs_small_title;
+      color: variables.$font;
+      font-weight: 400;
+      padding-bottom: 1rem;
+    }
+
+    p {
+      width: 60%;
+      font-size: variables.$fs_small_bread;
+      color: variables.$font;
+      font-weight: 400;
+
+      @media (max-width: breakpoints.$stack) {
+        width: 100%;
+      }
+    }
   }
 
   .search_container {

@@ -14,12 +14,10 @@ const Login = () => {
   const [redirect, setRedirect] = useState<Boolean>(false);
   const { push } = useRouter();
 
-  console.log(users);
-
+  // Fetch all users
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch users
         const resUsers = await fetch("http://localhost:4000/users");
         const usersData = await resUsers.json();
         setUsers(usersData);
@@ -31,12 +29,14 @@ const Login = () => {
     fetchData();
   }, []);
 
+  // Redirect after successful login
   useEffect(() => {
     if (redirect === true) {
       push("/dashboard");
     }
   }, [redirect]);
 
+  // Login
   const handleLogin = (event: React.FormEvent) => {
     event.preventDefault();
 

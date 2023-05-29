@@ -11,6 +11,7 @@ const Campaigns = () => {
   const [startDate, setStartDate] = useState<string>("");
   const [endDate, setEndDate] = useState<string>("");
 
+  // Fetching data from campaigns
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -28,9 +29,13 @@ const Campaigns = () => {
 
   return (
     <main className={styles.campaign}>
-      <h1>All campaign</h1>
-
-      {/* Search */}
+      <div className={styles.intro}>
+        <h1>All campaign</h1>
+        <p>
+          Search functionality and date picker. Test calender with for example:
+          startDate: 2030-01-05 - endDate: 2032-02-11
+        </p>
+      </div>
       <div className={styles.search_container}>
         <label className={styles.searchformfld}>
           <input
@@ -40,8 +45,6 @@ const Campaigns = () => {
           />
         </label>
       </div>
-
-      {/* Date */}
       <div className={styles.datepicker_container}>
         <label className={styles.searchformfld}>
           <input

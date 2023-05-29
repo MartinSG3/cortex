@@ -18,10 +18,10 @@ const UserPage = () => {
   const [password, setPassword] = useState<string>("");
   const [imageUrl, setImagUrl] = useState<string>("man");
 
+  // Fetching data from campaigns, dynamic routes
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch clients
         const resClients = await fetch(`http://localhost:4000/users/${id}`);
         const clientsData = await resClients.json();
         setClients(clientsData);
@@ -33,12 +33,14 @@ const UserPage = () => {
     fetchData();
   }, []);
 
+  // Redirect after delete
   useEffect(() => {
     if (redirect === true) {
       push("/users");
     }
   }, [redirect]);
 
+  // Put request based on id
   const handleSubmit = async () => {
     const user = {
       name: name === "" ? clients?.name : name,
@@ -63,6 +65,7 @@ const UserPage = () => {
     }
   };
 
+  // Delete user based on id
   const handleDelete = () => {
     fetch(`http://localhost:4000/users/${id}`, {
       method: "DELETE",
@@ -80,13 +83,14 @@ const UserPage = () => {
       });
   };
 
-  console.log(name);
-
   return (
     <main className={styles.users_id}>
-      <h1>
-        User: {clients?.name} ({id})
-      </h1>
+      <div className={styles.intro}>
+        <h1>
+          User: {clients?.name} ({id})
+        </h1>
+        <p>Update user, or delete user</p>
+      </div>
       <form onSubmit={handleSubmit}>
         <label className={styles.searchformfld}>
           <input

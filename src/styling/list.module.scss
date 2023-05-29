@@ -22,8 +22,8 @@
         position: relative;
         padding: 1rem;
 
-        @media (max-width: breakpoints.$mini-tablet) {
-          flex-wrap: wrap;
+        @media (max-width: breakpoints.$stack) {
+          display: block;
         }
 
         .image {
@@ -40,6 +40,10 @@
         .text {
           width: 80%;
 
+          @media (max-width: breakpoints.$stack) {
+            padding-top: 1rem;
+          }
+
           a {
             color: variables.$font;
             font-size: variables.$fs_small_bread;
@@ -47,7 +51,7 @@
           }
 
           h4 {
-            margin-top: 0.5rem;
+            margin-top: 1rem;
             word-wrap: break-word;
           }
         }
