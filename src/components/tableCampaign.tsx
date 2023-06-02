@@ -30,7 +30,7 @@ const Table = ({ data, query, startDate, endDate }: TableProps) => {
       case "Windows 11 launch":
         return "Windows 11";
       default:
-        return "No Matching Case";
+        return "Need rename";
     }
   };
 
