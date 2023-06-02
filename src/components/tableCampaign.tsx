@@ -13,7 +13,26 @@ interface TableProps {
 const Table = ({ data, query, startDate, endDate }: TableProps) => {
   const filterQuery = query ? query.toLowerCase() : "";
 
-  console.log(startDate);
+  const CheckType = (item: any) => {
+    return item.toLowerCase().replace("_", "  ");
+  };
+
+  const SwithState = (itemName: string) => {
+    switch (itemName) {
+      case "Magic Keyboard winter 2022":
+        return "Magic Keyboard";
+      case "iPad Pro june 2022":
+        return "iPad Pro";
+      case "Big Mac Week 32 - 33":
+        return "Big Mac";
+      case "Disney Plus - ALWAYS ON":
+        return "Disney";
+      case "Windows 11 launch":
+        return "Windows 11";
+      default:
+        return "No Matching Case";
+    }
+  };
 
   return (
     <div className={styles.table} style={{ overflowX: "auto" }}>
@@ -51,17 +70,20 @@ const Table = ({ data, query, startDate, endDate }: TableProps) => {
                   itemEndDate.isSameOrAfter(selectedStartDate))
               );
             })
-            .map((item) => (
-              <tr key={item.id}>
-                <td>
-                  <Link href={"/campaigns"}>{item.name} </Link>
-                </td>
-                <td>{item.type}</td>
-                <td>{item.budget}</td>
-                <td>{item.startDate}</td>
-                <td>{item.endDate}</td>
-              </tr>
-            ))}
+            .map((item) => {
+              console.log(item.name);
+              return (
+                <tr key={item.id}>
+                  <td>
+                    <Link href={"/campaigns"}>{SwithState(item.name)}</Link>
+                  </td>
+                  <td>{CheckType(item.type)}</td>
+                  <td>{item.budget}</td>
+                  <td>{item.startDate}</td>
+                  <td>{item.endDate}</td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </div>

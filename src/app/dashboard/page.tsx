@@ -28,11 +28,17 @@ export default function Dashboard() {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [clients, setClients] = useState<Client[]>([]);
   const [users, setUsers] = useState<User[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Fetching data from campaigns
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
+
       try {
+        // Simulate a slow API response
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
         // Fetch users
         const resUsers = await fetch("http://localhost:4000/users");
         const usersData = await resUsers.json();
@@ -49,6 +55,8 @@ export default function Dashboard() {
         setCampaigns(campaignsData);
       } catch (e) {
         console.log(`Error: ${e}`);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -57,28 +65,34 @@ export default function Dashboard() {
 
   return (
     <main className={styles.dashboard}>
-      <div className={styles.flex}>
-        <div className={styles.left}>
-          <div className={styles.clients_container}>
-            <h2>Clients</h2>
-            <div className={styles.tags_container}>
-              <Tags clientData={clients}></Tags>
+      {isLoading ? (
+        <div className={styles.loading}>
+          <div className={styles.spinner}></div>
+        </div>
+      ) : (
+        <div className={styles.flex}>
+          <div className={styles.left}>
+            <div className={styles.clients_container}>
+              <h2>Clients</h2>
+              <div className={styles.tags_container}>
+                <Tags clientData={clients}></Tags>
+              </div>
+            </div>
+            <div className={styles.campaigns_container}>
+              <h2>Campaigns</h2>
+              <div className={styles.table}>
+                <Table data={campaigns} />
+              </div>
             </div>
           </div>
-          <div className={styles.campaigns_container}>
-            <h2>Campaigns</h2>
-            <div className={styles.table}>
-              <Table data={campaigns} />
+          <div className={styles.right}>
+            <div className={styles.users_container}>
+              <h2>Users</h2>
+              <List clientData={users}></List>
             </div>
           </div>
         </div>
-        <div className={styles.right}>
-          <div className={styles.users_container}>
-            <h2>Users</h2>
-            <List clientData={users}></List>
-          </div>
-        </div>
-      </div>
+      )}
     </main>
   );
 }

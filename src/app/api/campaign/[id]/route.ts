@@ -11,10 +11,10 @@ export async function GET(
     const body = ApiJson.data[0].users;
     return NextResponse.json(body);
   } else if (id.params === "clients") {
-    const body = ApiJson.data[0].clients;
+    const body = ApiJson.data[1].clients;
     return NextResponse.json(body);
   } else if (id.params === "campaigns") {
-    const bodyUser = ApiJson.data[0].campaigns;
+    const bodyUser = ApiJson.data[2].campaigns;
     return NextResponse.json(bodyUser);
   }
 
