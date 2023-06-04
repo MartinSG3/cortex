@@ -32,7 +32,6 @@ const Table = ({ data, query, startDate, endDate }: TableProps) => {
   };
 
   const value = SwitchState(CampaignType.DISPLAY);
-  console.log(value);
 
   return (
     <div className={styles.table} style={{ overflowX: "auto" }}>

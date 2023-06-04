@@ -27,37 +27,6 @@ const Campaigns = () => {
     fetchData();
   }, []);
 
-  enum CampaignType2 {
-    SOCIAL_MEDIA,
-    SEARCH_ENGINE,
-    TV,
-  }
-
-  interface Campaign2 {
-    id: number;
-    name: string;
-    type: CampaignType2;
-    // ... other properties
-  }
-
-  const campaigns2: Campaign2[] = [
-    { id: 1, name: "Bro 1", type: CampaignType2.SOCIAL_MEDIA },
-    { id: 2, name: "Campaign 2", type: CampaignType2.SEARCH_ENGINE },
-    { id: 3, name: "Campaign 3", type: CampaignType2.TV },
-    // ... other campaigns
-  ];
-
-  function SwithState(type: CampaignType): string {
-    switch (type) {
-      case CampaignType.SEARCH_ENGINE:
-        return "Search engine";
-      case CampaignType.SOCIAL_MEDIA:
-        return "Social media";
-      case CampaignType.TV:
-        return "TV";
-    }
-  }
-
   return (
     <main className={styles.campaign}>
       <div className={styles.intro}>
