@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import moment from "moment";
 import styles from "../styling/table.module.scss";
 import Link from "next/link";
+import { CampaignType } from "@/lib/enum";
 
 interface TableProps {
   data: Campaign[];
@@ -17,22 +18,21 @@ const Table = ({ data, query, startDate, endDate }: TableProps) => {
     return item.toLowerCase().replace("_", "  ");
   };
 
-  const SwithState = (itemName: string) => {
-    switch (itemName) {
-      case "Magic Keyboard winter 2022":
-        return "Magic Keyboard";
-      case "iPad Pro june 2022":
-        return "iPad Pro";
-      case "Big Mac Week 32 - 33":
-        return "Big Mac";
-      case "Disney Plus - ALWAYS ON":
-        return "Disney";
-      case "Windows 11 launch":
-        return "Windows 11";
-      default:
-        return "Need rename";
+  const SwitchState = (type: CampaignType): string => {
+    switch (type) {
+      case CampaignType.SEARCH_ENGINE:
+        return CheckType(CampaignType.SEARCH_ENGINE);
+      case CampaignType.SOCIAL_MEDIA:
+        return CheckType(CampaignType.SOCIAL_MEDIA);
+      case CampaignType.TV:
+        return "TV";
+      case CampaignType.DISPLAY:
+        return CheckType(CampaignType.DISPLAY);
     }
   };
+
+  const value = SwitchState(CampaignType.DISPLAY);
+  console.log(value);
 
   return (
     <div className={styles.table} style={{ overflowX: "auto" }}>
@@ -71,13 +71,15 @@ const Table = ({ data, query, startDate, endDate }: TableProps) => {
               );
             })
             .map((item) => {
-              console.log(item.name);
+              console.log(item.type);
+              const campaignType = SwitchState(item.type);
+
               return (
                 <tr key={item.id}>
                   <td>
-                    <Link href={"/campaigns"}>{SwithState(item.name)}</Link>
+                    <Link href={"/campaigns"}>{item.name}</Link>
                   </td>
-                  <td>{CheckType(item.type)}</td>
+                  <td>{campaignType}</td>
                   <td>{item.budget}</td>
                   <td>{item.startDate}</td>
                   <td>{item.endDate}</td>

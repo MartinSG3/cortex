@@ -1,4 +1,4 @@
-enum CampaignType {
+export enum CampaignType {
   /**
    * Product or brand will be displayed in advertisements on social media such as facebook or instagram
    */
